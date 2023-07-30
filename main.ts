@@ -7,6 +7,7 @@ interface CustomAttachmentLocationSettings {
     dateTimeFormat: string;
     autoRenameFolder: boolean;
     autoRenameFiles: boolean;
+	autoDeleteFolder: boolean;
 }
 
 const DEFAULT_SETTINGS: CustomAttachmentLocationSettings = {
@@ -14,7 +15,8 @@ const DEFAULT_SETTINGS: CustomAttachmentLocationSettings = {
     pastedImageFileName: 'image-${date}',
     dateTimeFormat: 'YYYYMMDDHHmmssSSS',
     autoRenameFolder: true,
-    autoRenameFiles: false
+    autoRenameFiles: false,
+	autoDeleteFolder: false
 }
 
 let originalSettings = {
@@ -61,6 +63,7 @@ export default class CustomAttachmentLocation extends Plugin {
         this.registerEvent(this.app.workspace.on('file-open', this.handleFileOpen.bind(this)));
 
         this.registerEvent(this.app.vault.on('rename', this.handleRename.bind(this)));
+		this.registerEvent(this.app.vault.on('delete', this.handleDelete.bind(this)));
 
 
     }
@@ -217,6 +220,26 @@ export default class CustomAttachmentLocation extends Plugin {
 
         this.updateAttachmentFolderConfig(path);
     }
+
+	async handleDelete(file: TFile) {
+		console.log('Handle Delete');
+
+		if (file.extension !== 'md')
+			return;
+
+		if (!this.settings.autoDeleteFolder) {
+			return;
+		}
+
+		let fileName = file.basename;
+		let folderPath = Path.dirname(file.path);
+		let path: string = this.getAttachmentFolderFullPath(folderPath, fileName);
+
+		if (await this.adapter.exists(path)) {
+			await this.adapter.trashLocal(path);
+			console.log('Deleted', path)
+		}
+	}
 
     async handleRename(newFile: TFile, oldFilePath: string) {
         console.log('Handle Rename');
@@ -380,5 +403,15 @@ class CustomAttachmentLocationSettingTab extends PluginSettingTab {
                         this.plugin.settings.autoRenameFiles = value;
                         await this.plugin.saveSettings();
                     }));
+
+		new Setting(containerEl)
+			.setName('Automatically delete attachment folder')
+			.setDesc('When deleting md files, automatically delete attachment folder if folder name contains "${filename}".')
+			.addToggle(toggle => toggle
+				.setValue(this.plugin.settings.autoDeleteFolder)
+				.onChange(async (value: boolean) => {
+					this.plugin.settings.autoDeleteFolder = value;
+					await this.plugin.saveSettings();
+				}));
     }
 }
