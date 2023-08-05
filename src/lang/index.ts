@@ -1,12 +1,14 @@
 import zh from './zh';
+import en from './en';
 
 export const lang = {
+    en,
     zh,
     get(key: string, ...args: string[]): string {
         // 获取语言设置
-        const language = window.i18next?.language;
-        // 找不到默认 zh
-        const _lang = this[language] || zh;
+        const language = window.localStorage.getItem('language') || "en";
+        // 找不到默认 en
+        const _lang = this[language] || en;
         // 找不到 key，直接使用 key
         let text = _lang[key] || key;
         // 替换占位符参数
