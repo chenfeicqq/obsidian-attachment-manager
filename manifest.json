@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-custom-attachment-location",
-	"name": "Custom Attachment Location",
-	"version": "0.0.9",
-	"minAppVersion": "0.12.17",
-	"description": "Customize attachment location with variables($filename, $data, etc) like typora.",
-	"author": "RainCat1998",
-	"authorUrl": "https://github.com/RainCat1998",
-	"isDesktopOnly": true
+    "id": "obsidian-attachment-management",
+    "name": "Attachment Management",
+    "version": "1.0.0",
+    "minAppVersion": "0.12.17",
+    "description": "附件管理器：附件文件夹名称绑定笔记名、自动重命名、自动删除、显示/隐藏。",
+    "author": "chenfeicqq",
+    "authorUrl": "https://github.com/chenfeicqq",
+    "isDesktopOnly": true
 }

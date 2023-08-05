@@ -1,11 +1,14 @@
-# Obsidian Custom Attachment location
+# Obsidian Attachment Management
 
-Customize attachment location with variables($filename, $data, etc) like typora.
+附件管理器，支持附件文件夹名称绑定笔记名、自动重命名、自动删除、显示/隐藏。
 
-## Features
+## 特性
 
-* Modify location for attachment folder.
-* Modify filename for **Pasted Image**.
+* 附件文件夹名称绑定笔记名
+* 自动重命名“粘贴图片”
+* 笔记名调整自动修改“附件文件夹”和“粘贴图片”的名称
+* 删除笔记自动删除附件文件夹
+* 附件文件夹的显示/隐藏
 
 ⚠️  **IMPORTANT:** This plugin will overwrite the following **two settings** and restore them when the plugin is disabled.
 
