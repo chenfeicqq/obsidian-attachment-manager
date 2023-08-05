@@ -1,5 +1,5 @@
 export default {
-    "plugin_name": "Attachment Management",
+    "plugin_name": "Attachment Manager",
     "settings_folder_name": "Attachment Folder",
     "settings_folder_name_desc": "The name of the attachment folder, using the variable ${filename} to get the name of the note (e.g., ${filename}.md_Attachments).",
     "settings_pasted_image_file_name": "Pasted Image Name",

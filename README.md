@@ -1,4 +1,4 @@
-# Obsidian Attachment Management
+# Obsidian Attachment Manager
 
 附件管理器，支持附件文件夹名称绑定笔记名、自动重命名、自动删除、显示/隐藏。
 
