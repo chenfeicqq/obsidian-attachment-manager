@@ -1,4 +1,4 @@
-![English](README_EN.md) | ![中文](README.md)
+![English](/blob/master/README_EN.md) | ![中文](README.md)
 
 # 附件管理器（Attachment Manager）
 
