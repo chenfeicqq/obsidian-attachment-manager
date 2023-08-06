@@ -26,7 +26,7 @@
 
 ### 手工安装
 
-1. 从 [Git 仓库](https://github.com/chenfeicqq/obsidian-attachment-manager) 下载 `main.js`, `manifest.json` 文件。
+1. 从 [Git releases](https://github.com/chenfeicqq/obsidian-attachment-manager/releases) 下载 `main.js`, `manifest.json` 文件。
 2. 到笔记仓库的插件目录（`笔记仓库目录/.obsidian/plugins`）下创建插件目录 `obsidian-attachment-manager`。
 3. 复制 `main.js`, `manifest.json` 到插件文件夹 `obsidian-attachment-manager`。
 4. 在 Obsidian 设置中，启用插件。

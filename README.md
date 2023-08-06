@@ -26,7 +26,7 @@ Attachment Manager: Attachment folder name binding note name, automatically rena
 
 ### Manual Install
 
-1. Download `main.js`, `manifest.json` in the [master](https://github.com/chenfeicqq/obsidian-attachment-manager).
+1. Download `main.js`, `manifest.json` in the [Git releases](https://github.com/chenfeicqq/obsidian-attachment-manager/releases).
 2. Create the plugin directory `obsidian-attachment-manager` in the vault plugins directory `VaultFolder/.obsidian/plugins`.
 3. Copy `main.js`, `manifest.json` to `obsidian-attachment-manager` directory.
 4. Enable plugin in Obsidian setting.
