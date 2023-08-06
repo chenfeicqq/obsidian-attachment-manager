@@ -1,4 +1,4 @@
-![English](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README_EN.md) | ![中文](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README.md)
+[English](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README_EN.md) | [中文](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README.md)
 
 
 # 附件管理器（Attachment Manager）
@@ -37,6 +37,6 @@
 
 ![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/settings.png)
 
-![](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/images/zh/toggle-hide-command.png)
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/toggle-hide-command.png)
 
-![](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/images/zh/toggle-hide-ribbon.png)
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/toggle-hide-ribbon.png)
