@@ -1,4 +1,5 @@
-![English](/blob/master/README_EN.md) | ![中文](README.md)
+![English](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README_EN.md) | ![中文](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README.md)
+
 
 # 附件管理器（Attachment Manager）
 
@@ -31,3 +32,11 @@
 4. 在 Obsidian 设置中，启用插件。
 
 ## 插件截图
+
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/overview.png)
+
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/settings.png)
+
+![](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/images/zh/toggle-hide-command.png)
+
+![](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/images/zh/toggle-hide-ribbon.png)
