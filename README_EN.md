@@ -1,4 +1,4 @@
-![English](README_EN.md) | ![中文](README.md)
+[English](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README_EN.md) | [中文](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README.md)
 
 # Attachment Manager
 
@@ -32,3 +32,11 @@ Attachment Manager: Attachment folder name binding note name, automatically rena
 4. Enable plugin in Obsidian setting.
 
 ## Screenshots
+
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/overview.png)
+
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/settings.png)
+
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/toggle-hide-command.png)
+
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/toggle-hide-ribbon.png)
