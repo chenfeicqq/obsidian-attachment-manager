@@ -1,42 +1,42 @@
 [English](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README_EN.md) | [中文](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README.md)
 
+# Attachment Manager
 
-# 附件管理器（Attachment Manager）
+Attachment Manager: Attachment folder name binding note name, automatically rename, automatically delete, show/hide.
 
-附件管理器，支持附件文件夹名称绑定笔记名、自动重命名、自动删除、显示/隐藏。
+## Features
 
-## 功能
+* Attachment folder name binding note Name
+* Automatically rename 'Pasted Image'
+* Automatically rename attachment folder
+* Automatically rename attachment files
+* Automatically delete attachment folder
+* Hide/show attachment folder
 
-* 附件文件夹名称绑定笔记名
-* 自动重命名“粘贴图片”
-* 笔记名调整自动修改“附件文件夹”和“附件”的名称
-* 删除笔记自动删除附件文件夹
-* 附件文件夹的显示/隐藏
+⚠️  **IMPORTANT:** This plugin will overwrite the following **two settings** and restore them when the plugin is disabled.
+* **"Files & Links -> New link format** for generating md links.
+* **"Files & Links -> Default location for new attachments"** for custom attachment folder.
 
-⚠️  **重要：** 插件启动时会覆盖 **下面2个设置**，在禁用时会恢复。
-* **文件与链接 -> 内部链接类型** 生成附件的链接。
-* **文件与链接 -> 附件默认存放路径** 自定义附件文件夹。
+## How to use
 
-## 怎么使用
+### Plugin Manager
 
-### 从插件市场安装
+* Install via the Community plugins setting. Search for **Attachment Manager**.
+* Activate the plugin in the settings.
 
-* 社区插件市场中搜索 **Attachment Manager**
-* 安装并启用插件
+### Manual Install
 
-### 手工安装
+1. Download `main.js`, `manifest.json` in the [master](https://github.com/chenfeicqq/obsidian-attachment-manager).
+2. Create the plugin directory `obsidian-attachment-manager` in the vault plugins directory `VaultFolder/.obsidian/plugins`.
+3. Copy `main.js`, `manifest.json` to `obsidian-attachment-manager` directory.
+4. Enable plugin in Obsidian setting.
 
-1. 从 [Git 仓库](https://github.com/chenfeicqq/obsidian-attachment-manager) 下载 `main.js`, `manifest.json` 文件。
-2. 到笔记仓库的插件目录（`笔记仓库目录/.obsidian/plugins`）下创建插件目录 `obsidian-attachment-manager`。
-3. 复制 `main.js`, `manifest.json` 到插件文件夹 `obsidian-attachment-manager`。
-4. 在 Obsidian 设置中，启用插件。
-
-## 插件截图
+## Screenshots
 
 ![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/overview.png)
 
-![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/settings.png)
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/settings.png)
 
-![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/toggle-hide-command.png)
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/toggle-hide-command.png)
 
-![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/toggle-hide-ribbon.png)
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/toggle-hide-ribbon.png)
