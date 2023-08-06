@@ -21,10 +21,13 @@ export class FileOpenHandler {
     async handle(file: TFile | null) {
         console.log('Handle File Open');
 
-        if (file == null || file.extension !== 'md') {
+        if (file == null) {
+            return;
+        }
+        if (file.extension !== 'md' && file.extension !== 'canvas') {
             return;
         }
 
-        this.vaultAttachmentConfiguration.update(buildFolderName(this.plugin.settings, file.basename))
+        this.vaultAttachmentConfiguration.update(buildFolderName(this.plugin.settings, file.name))
     }
 }

@@ -1,4 +1,4 @@
-import { TFile, Vault, FileManager, FileSystemAdapter, normalizePath } from 'obsidian';
+import { TFile, TAbstractFile, Vault, FileManager, FileSystemAdapter, normalizePath } from 'obsidian';
 import * as Path from 'path';
 
 import { Plugin } from "../Plugin"
@@ -25,10 +25,14 @@ export class RenameHandler {
         this.vaultAttachmentConfiguration = plugin.vaultAttachmentConfiguration;
     }
 
-    async handle(newFile: TFile, oldFilePath: string) {
+    async handle(newFile: TAbstractFile, oldFilePath: string) {
         console.log('Handle Rename');
 
-        if (newFile.extension !== 'md') {
+        if (!(newFile instanceof TFile)) {
+            return;
+        }
+
+        if (newFile.extension !== 'md' && newFile.extension !== 'canvas') {
             return;
         }
 
@@ -36,13 +40,11 @@ export class RenameHandler {
         if (!containsFilename(this.plugin.settings) || !this.plugin.settings.autoRenameFolder) {
             return;
         }
-        const newFileName = newFile.basename;
-        const newFolderName = buildFolderName(this.plugin.settings, newFileName);
+        const newFolderName = buildFolderName(this.plugin.settings, newFile.name);
         this.vaultAttachmentConfiguration.update(newFolderName)
-        const newFolderPath = Path.join(Path.dirname(newFile.path), newFolderName);
+        const newFolderPath = normalizePath(Path.join(Path.dirname(newFile.path), newFolderName));
 
-        const oldFileName = Path.basename(oldFilePath, '.md');
-        const oldFolderPath = Path.join(Path.dirname(oldFilePath), buildFolderName(this.plugin.settings, oldFileName));
+        const oldFolderPath = normalizePath(Path.join(Path.dirname(oldFilePath), buildFolderName(this.plugin.settings, Path.basename(oldFilePath))));
 
         await this._renameFolder(oldFolderPath, newFolderPath);
 
@@ -50,7 +52,8 @@ export class RenameHandler {
             return;
         }
 
-        await this._renameFiles(newFolderPath, newFileName, oldFileName)
+        // 老的文件名中剔除后缀（假定 rename 后缀不会变化）
+        await this._renameFiles(newFolderPath, newFile.basename, Path.basename(oldFilePath, "." + newFile.extension))
     }
 
     async _renameFolder(oldFolderPath: string, newFolderPath: string) {

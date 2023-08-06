@@ -3,12 +3,11 @@ import { Plugin as ObsidianPlugin, FileSystemAdapter } from 'obsidian';
 import { Settings, DEFAULT_SETTINGS } from "./Settings";
 import { SettingTab } from './SettingTab';
 import { VaultAttachmentConfiguration } from './components/VaultAttachmentConfiguration';
-import { EditorPasteHandler } from './handler/EditorPasteHandler';
-import { EditorDropHandler } from './handler/EditorDropHandler';
 import { FileOpenHandler } from './handler/FileOpenHandler';
 import { DeleteHandler } from './handler/DeleteHandler';
 import { RenameHandler } from './handler/RenameHandler';
 import { HideFolder } from './components/HideFolder';
+import { CreateHandler } from './handler/CreateHandler';
 
 export class Plugin extends ObsidianPlugin {
     settings: Settings
@@ -27,12 +26,10 @@ export class Plugin extends ObsidianPlugin {
 
         this.addSettingTab(new SettingTab(this.app, this));
 
-        // 粘贴图片
-        this.registerEvent(this.app.workspace.on('editor-paste', EditorPasteHandler.build(this)));
-        // 拓拽文件至 md 文件
-        this.registerEvent(this.app.workspace.on('editor-drop', EditorDropHandler.build(this)));
         // 文件打开
         this.registerEvent(this.app.workspace.on('file-open', FileOpenHandler.build(this)));
+        // 文件创建
+        this.registerEvent(this.app.vault.on('create', CreateHandler.build(this)));
         // 文件重命名
         this.registerEvent(this.app.vault.on('rename', RenameHandler.build(this)));
         // 文件删除

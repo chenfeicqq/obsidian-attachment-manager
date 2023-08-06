@@ -2,7 +2,7 @@ import { moment } from "obsidian";
 
 export interface Settings {
     folderName: string;
-    pastedImageFileName: string;
+    pastedImageName: string;
     datetimeFormat: string;
     hideFolder: boolean;
     autoRenameFolder: boolean;
@@ -10,16 +10,17 @@ export interface Settings {
     autoDeleteFolder: boolean;
 }
 
+const _notename = "${notename}";
 const _filename = "${filename}";
 const _datetime = "${datetime}";
 
 export const DEFAULT_SETTINGS: Settings = {
-    folderName: `${_filename}.md_Attachments`,
-    pastedImageFileName: `${_filename}-${_datetime}`,
+    folderName: `${_filename}_Attachments`,
+    pastedImageName: `${_notename}-${_datetime}`,
     datetimeFormat: 'YYYYMMDDHHmmssSSS',
     hideFolder: false,
     autoRenameFolder: true,
-    autoRenameFiles: false,
+    autoRenameFiles: true,
     autoDeleteFolder: false,
 }
 
@@ -47,7 +48,7 @@ export const buildFolderName = (settings: Settings, fileName: string) => {
     return "./" + settings.folderName.replace(_filename, fileName);
 }
 
-export const buildPastedImageFileName = (settings: Settings, fileName: string) => {
+export const buildPastedImageName = (settings: Settings, notename: string) => {
     const datetime = moment().format(settings.datetimeFormat);
-    return settings.pastedImageFileName.replace(_filename, fileName).replace(_datetime, datetime);
+    return settings.pastedImageName.replace(_notename, notename).replace(_datetime, datetime);
 }

@@ -32,10 +32,10 @@ export class SettingTab extends PluginSettingTab {
             .setName(lang.get('settings_pasted_image_file_name'))
             .setDesc(lang.get('settings_pasted_image_file_name_desc'))
             .addText(text => text
-                .setPlaceholder(DEFAULT_SETTINGS.pastedImageFileName)
-                .setValue(this.plugin.settings.pastedImageFileName)
+                .setPlaceholder(DEFAULT_SETTINGS.pastedImageName)
+                .setValue(this.plugin.settings.pastedImageName)
                 .onChange(async (value: string) => {
-                    this.plugin.settings.pastedImageFileName = value;
+                    this.plugin.settings.pastedImageName = value;
                     await this.plugin.saveSettings();
                 }));
 

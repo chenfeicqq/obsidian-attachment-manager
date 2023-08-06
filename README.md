@@ -1,63 +1,33 @@
-# Obsidian Attachment Manager
+![English](README_EN.md) | ![中文](README.md)
+
+# 附件管理器（Attachment Manager）
 
 附件管理器，支持附件文件夹名称绑定笔记名、自动重命名、自动删除、显示/隐藏。
 
-## 特性
+## 功能
 
 * 附件文件夹名称绑定笔记名
 * 自动重命名“粘贴图片”
-* 笔记名调整自动修改“附件文件夹”和“粘贴图片”的名称
+* 笔记名调整自动修改“附件文件夹”和“附件”的名称
 * 删除笔记自动删除附件文件夹
 * 附件文件夹的显示/隐藏
 
-⚠️  **IMPORTANT:** This plugin will overwrite the following **two settings** and restore them when the plugin is disabled.
+⚠️  **重要：** 插件启动时会覆盖 **下面2个设置**，在禁用时会恢复。
+* **文件与链接 -> 内部链接类型** 生成附件的链接。
+* **文件与链接 -> 附件默认存放路径** 自定义附件文件夹。
 
-* **"Files & Links -> New link format -> Relative path to file"** for generating md links.
+## 怎么使用
 
-* **"Files & Links -> Default location for new attachments"** for custom attachment folder.
+### 从插件市场安装
 
-## How to use
+* 社区插件市场中搜索 **Attachment Manager**
+* 安装并启用插件
 
-### Plugin Manager
+### 手工安装
 
-* Install via the Third Party plugins setting. Search for **Custom Attachment location**.
-* Activate the plugin in the settings.
+1. 从 [Git 仓库](https://github.com/chenfeicqq/obsidian-attachment-manager) 下载 `main.js`, `manifest.json` 文件。
+2. 到笔记仓库的插件目录（`笔记仓库目录/.obsidian/plugins`）下创建插件目录 `obsidian-attachment-manager`。
+3. 复制 `main.js`, `manifest.json` 到插件文件夹 `obsidian-attachment-manager`。
+4. 在 Obsidian 设置中，启用插件。
 
-### Manual Install
-
-* Download `main.js`, `manifest.json` in the [latest release](https://github.com/RainCat1998/obsidian-custom-attachment-location-plugin/releases/latest).
-* Copy `main.js`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/obsidian-custom-attachment-location/`.
-* Enable plugin in Obsidian setting.
-
-### Settings
-
-* **Location for New Attachments**
-  * Same to "Files & Links -> Default location for new attachments".
-  * `${filename}` representing for current note filename.
-  * **Put "./" at the beginning of the path if you want to use relative path.**
-  * example: **`assets/${filename}`, `./assets/${filename}`**
-  * **DO NOT start with "/" or end with "/"**
-  * (Wrong example: `/assets/${filename}/`)
-
-* **Pasted Image Name**
-  * `${filename}` representing for current note filename. ${date} representing for current datetime in custom Date Format.
-  * example: **`image-${date}`, `${filename}-img-${date}`**
-  * Obsidian default: "Pasted image YYYYMMDDHHmmss"
-  * **Note**: This setting only changes image filename from clipboard. If your attachment is copied from the explorer, obsidian will just copy the original file to the attachment folder without renaming.
-
-* **Date Format**
-  * Date format string for moment.js.
-  * More info: [Format](https://momentjs.com/docs/#/displaying/format/)
-  * example: "YYYYMMDDHHmmssSSS".
-
-* **Automatically rename attachment folder**
-  * Automatically update attachment folder name if "Location for New Attachments" contains `${filename}`.
-
-* **Automatically rename attachment files [Experimental]**
-  * Automatically update attachment files in target md file if "Pasted Image Name" contains `${filename}`.
-  * Just simply substitute `${filename}` string in attachment filename. So it may be dangerous if multiple files share the same prefix.
-
-## Screenshots
-
-![image](https://user-images.githubusercontent.com/36730607/138717686-1f62b499-25ae-4662-bd50-6187c142b747.png)
-![image](https://user-images.githubusercontent.com/36730607/150306765-f7acb4e2-fd8c-472b-a952-5491b530ed6d.png)
+## 插件截图
