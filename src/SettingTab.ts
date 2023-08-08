@@ -61,6 +61,16 @@ export class SettingTab extends PluginSettingTab {
                 }));
 
         new Setting(containerEl)
+            .setName(lang.get('settings_aero_folder'))
+            .addToggle(toggle => toggle
+                .setValue(this.plugin.settings.aeroFolder)
+                .onChange(async (value: boolean) => {
+                    this.plugin.settings.aeroFolder = value;
+                    await this.plugin.saveSettings();
+                    await this.plugin.hideFolder.refresh();
+                }));
+
+        new Setting(containerEl)
             .setName(lang.get('settings_auto_rename_folder'))
             .setDesc(lang.get('settings_auto_rename_folder_desc'))
             .addToggle(toggle => toggle

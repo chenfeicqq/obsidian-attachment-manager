@@ -48,9 +48,7 @@ export class HideFolder {
                 }
             });
         });
-        window.setTimeout(() => {
-            this.mutationObserver.observe(window.document, { childList: true, subtree: true });
-        }, 1000)
+        this.mutationObserver.observe(window.document, { childList: true, subtree: true });
     }
 
     async refresh() {
@@ -62,13 +60,21 @@ export class HideFolder {
     async refreshFolders() {
         const filter = buildFolderRegExp(this.plugin.settings);
 
-        const folders = document.querySelectorAll(".nav-folder");
+        const folders = document.querySelectorAll(".nav-folder-title-content");
 
         folders.forEach((folder) => {
-            const title = folder.querySelector(".nav-folder-title-content") as HTMLElement;
-            const folderName = title?.innerText;
+            const folderName = folder.innerHTML;
             if (filter.test(folderName)) {
-                (folder as HTMLElement).style.display = this.plugin.settings.hideFolder ? "none" : "";
+                if (this.plugin.settings.hideFolder) {
+                    folder.parentElement?.parentElement?.addClass("hide-attachment-folder");
+                } else {
+                    folder.parentElement?.parentElement?.removeClass("hide-attachment-folder");
+                }
+                if (this.plugin.settings.aeroFolder) {
+                    folder.parentElement?.parentElement?.addClass("aero-attachment-folder");
+                } else {
+                    folder.parentElement?.parentElement?.removeClass("aero-attachment-folder");
+                }
             }
         })
     }

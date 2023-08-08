@@ -5,6 +5,7 @@ export interface Settings {
     pastedImageName: string;
     datetimeFormat: string;
     hideFolder: boolean;
+    aeroFolder: boolean;
     autoRenameFolder: boolean;
     autoRenameFiles: boolean;
     autoDeleteFolder: boolean;
@@ -19,6 +20,7 @@ export const DEFAULT_SETTINGS: Settings = {
     pastedImageName: `${_notename}-${_datetime}`,
     datetimeFormat: 'YYYYMMDDHHmmssSSS',
     hideFolder: false,
+    aeroFolder: true,
     autoRenameFolder: true,
     autoRenameFiles: true,
     autoDeleteFolder: false,

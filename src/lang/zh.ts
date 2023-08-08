@@ -7,6 +7,7 @@ export default {
     "settings_datetime_format": "${datetime} 格式",
     "settings_datetime_format_desc": "日期时间格式（使用 moment.js 格式），例：YYYYMMDDHHmmssSSS。",
     "settings_hide_folder": "隐藏附件文件夹",
+    "settings_aero_folder": "透明附件文件夹",
     "settings_auto_rename_folder": "自动重命名附件文件夹",
     "settings_auto_rename_folder_desc": "笔记（md/canvas）名称变化时，如果附件文件夹名称中包含“${filename}”，自动重命名附件文件夹。",
     "settings_auto_rename_files": "自动重命名附件文件",

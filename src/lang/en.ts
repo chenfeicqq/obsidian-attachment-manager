@@ -7,6 +7,7 @@ export default {
     "settings_datetime_format": "${datetime} Format",
     "settings_datetime_format_desc": "Format for ${datetime} (use moment.js format). e.g., YYYYMMDDHHmmssSSS .",
     "settings_hide_folder": "Hide attachment folder",
+    "settings_aero_folder": "Aero attachment folder",
     "settings_auto_rename_folder": "Automatically rename attachment folder",
     "settings_auto_rename_folder_desc": "When renaming note(\"md/canvas\"), automatically rename attachment folder if folder name contains \"${filename}\".",
     "settings_auto_rename_files": "Automatically rename attachment files",
