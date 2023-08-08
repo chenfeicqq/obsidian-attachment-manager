@@ -1,4 +1,4 @@
-[English](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README_EN.md) | [中文](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README.md)
+[English](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README.md) | [中文](https://github.com/chenfeicqq/obsidian-attachment-manager/blob/master/README_CN.md)
 
 # Attachment Manager
 
