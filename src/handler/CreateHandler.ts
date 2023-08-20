@@ -1,4 +1,4 @@
-import { Workspace, TAbstractFile, TFile, FileManager, normalizePath, TextFileView, FileSystemAdapter, Vault } from 'obsidian';
+import { Workspace, TAbstractFile, TFile, FileManager, normalizePath, TextFileView, Vault } from 'obsidian';
 import * as Path from 'path';
 
 import { Plugin } from "../Plugin"

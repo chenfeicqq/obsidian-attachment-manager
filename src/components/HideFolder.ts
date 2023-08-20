@@ -28,7 +28,7 @@ export class HideFolder {
 
         // This adds a status bar item to the bottom of the app. Does not work on mobile apps.
         this.statusBarItem = this.plugin.addStatusBarItem();
-        this.statusBarItem.setText(this.plugin.settings.hideFolder ? "Attachment folders are hidden" : "");
+        this.statusBarItem.setText(this.plugin.settings.hideFolder ? lang.get("status_attachment_folder_visibility") : "");
 
         // This adds a command that can be triggered anywhere
         this.plugin.addCommand({
@@ -53,7 +53,7 @@ export class HideFolder {
 
     async refresh() {
         setIcon(this.ribbonIconButton, this.plugin.settings.hideFolder ? "eye-off" : "eye");
-        this.statusBarItem.innerHTML = this.plugin.settings.hideFolder ? lang.get("status_attachment_folder_visibility") : "";
+        this.statusBarItem.setText(this.plugin.settings.hideFolder ? lang.get("status_attachment_folder_visibility") : "");
         await this.refreshFolders();
     }
 

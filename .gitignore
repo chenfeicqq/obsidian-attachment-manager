@@ -23,3 +23,6 @@ data.json
 
 # Exclude local history
 .history
+
+# Build file
+main.js
