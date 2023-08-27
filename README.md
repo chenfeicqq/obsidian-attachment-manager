@@ -12,6 +12,7 @@ Attachment Manager: Attachment folder name binding note name, automatically rena
 * Automatically rename attachment files
 * Automatically delete attachment folder
 * Hide/show attachment folder
+* Aero attachment folder
 
 ⚠️  **IMPORTANT:** This plugin will overwrite the following **two settings** and restore them when the plugin is disabled.
 * **"Files & Links -> New link format** for generating md links.
