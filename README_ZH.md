@@ -39,6 +39,6 @@
 
 ![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/settings.png)
 
-![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/toggle-hide-command.png)
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/command.png)
 
 ![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/zh/toggle-hide-ribbon.png)

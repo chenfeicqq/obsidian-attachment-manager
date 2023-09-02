@@ -39,6 +39,6 @@ Attachment Manager: Attachment folder name binding note name, automatically rena
 
 ![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/settings.png)
 
-![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/toggle-hide-command.png)
+![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/command.png)
 
 ![](https://raw.githubusercontent.com/chenfeicqq/obsidian-attachment-manager/master/images/en/toggle-hide-ribbon.png)
