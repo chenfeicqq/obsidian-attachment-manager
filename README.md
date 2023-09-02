@@ -6,7 +6,8 @@ Attachment Manager: Attachment folder name binding note name, automatically rena
 
 ## Features
 
-* Attachment folder name binding note Name
+* Attachment folder name binding note name
+* Download note's remote image to attachment folder
 * Automatically rename 'Pasted Image'
 * Automatically rename attachment folder
 * Automatically rename attachment files

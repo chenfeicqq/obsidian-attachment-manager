@@ -8,11 +8,13 @@ import { DeleteHandler } from './handler/DeleteHandler';
 import { RenameHandler } from './handler/RenameHandler';
 import { HideFolder } from './components/HideFolder';
 import { CreateHandler } from './handler/CreateHandler';
+import { LocalizationAttachments } from './components/LocalizationAttachments';
 
 export class Plugin extends ObsidianPlugin {
     settings: Settings
     hideFolder: HideFolder
     adapter: FileSystemAdapter
+    localizationAttachments: LocalizationAttachments
     vaultAttachmentConfiguration: VaultAttachmentConfiguration
 
     async onload() {
@@ -37,6 +39,9 @@ export class Plugin extends ObsidianPlugin {
 
         this.hideFolder = new HideFolder(this);
         this.hideFolder.load();
+
+        this.localizationAttachments = new LocalizationAttachments(this);
+        this.localizationAttachments.load();
     }
 
     onunload() {

@@ -16,4 +16,7 @@ export default {
     "settings_auto_delete_folder_desc": "笔记（md/canvas）删除时，如果附件文件夹名称中包含“${filename}”，自动删除附件文件夹。",
     "command_toggle_attachment_folder_visibility": "切换附件文件夹的“显示/隐藏”",
     "status_attachment_folder_visibility": "附件文件夹已隐藏",
+    "command_localization_remote_attachments": "下载远程图片",
+    "command_localization_remote_attachments_success": "下载成功。",
+    "command_localization_remote_attachments_failure": "下载失败。",
 }

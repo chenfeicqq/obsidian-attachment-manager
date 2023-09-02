@@ -16,4 +16,7 @@ export default {
     "settings_auto_delete_folder_desc": "When deleting note(\"md/canvas\"), automatically delete attachment folder if folder name contains \"${filename}\".",
     "command_toggle_attachment_folder_visibility": "Toggle visibility of attachment folder",
     "status_attachment_folder_visibility": "Attachment folder are hidden.",
+    "command_localization_remote_attachments": "Download remote images",
+    "command_localization_remote_attachments_success": "download success.",
+    "command_localization_remote_attachments_failure": "download failure.",
 }
