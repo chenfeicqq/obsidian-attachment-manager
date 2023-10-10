@@ -67,6 +67,9 @@ export class CreateHandler {
     }
 
     async _rename4MD(file: TFile, newPath: string, activeView: TextFileView, activeFile: TFile) {
+        // 先原地移动一次文件，否则当 newLinkFormat 设置为 shortest 时，generateMarkdownLink 生成的 oldLinkText 不正确
+        // https://github.com/chenfeicqq/obsidian-attachment-manager/issues/4
+        await this.fileManager.renameFile(file, file.path);
         const oldLinkText = this.fileManager.generateMarkdownLink(file, activeFile.path);
         await this.fileManager.renameFile(file, newPath);
         const newLinkText = this.fileManager.generateMarkdownLink(file, activeFile.path);

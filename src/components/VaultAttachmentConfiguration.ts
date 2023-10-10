@@ -16,8 +16,12 @@ export class VaultAttachmentConfiguration {
         this._value = this.vault.getConfig(this.key);
         //@ts-ignore
         this._value2 = this.vault.getConfig(this.key2)
-        //@ts-ignore
-        this.vault.setConfig(this.key2, "relative");
+        // 非 relative（相对路径） 及 shortest（最短路径），则设置为 relative
+        // https://github.com/chenfeicqq/obsidian-attachment-manager/issues/4
+        if (this._value2 !== 'relative' && this._value2 !== 'shortest') {
+            //@ts-ignore
+            this.vault.setConfig(this.key2, "relative");
+        }
     }
 
     update(value: string) {
