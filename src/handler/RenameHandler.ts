@@ -57,13 +57,20 @@ export class RenameHandler {
     }
 
     async _renameFolder(oldFolderPath: string, newFolderPath: string) {
-        if (await !this.adapter.exists(oldFolderPath) || oldFolderPath === newFolderPath) {
+        if (!(await this.adapter.exists(oldFolderPath)) || oldFolderPath === newFolderPath) {
             return;
         }
         const oldFolder = this.vault.getAbstractFileByPath(oldFolderPath);
 
         if (oldFolder == null) {
             return;
+        }
+
+        // 新 folder 的父目录不存在时，创建父目录，避免移动失败
+        // https://github.com/chenfeicqq/obsidian-attachment-manager/issues/5
+        const newFolderParentPath = Path.dirname(newFolderPath);
+        if (!(await this.adapter.exists(newFolderParentPath))) {
+            await this.vault.createFolder(newFolderParentPath);
         }
 
         await this.fileManager.renameFile(oldFolder, newFolderPath);
