@@ -1,4 +1,4 @@
-import { FileManager, Notice, TFile, TextFileView, Vault, Workspace, normalizePath, requestUrl } from "obsidian";
+import { FileManager, MenuItem, Notice, TFile, TextFileView, Vault, Workspace, normalizePath, requestUrl } from "obsidian";
 import * as Path from 'path';
 
 
