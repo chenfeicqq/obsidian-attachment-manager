@@ -1,6 +1,6 @@
 {
     "name": "obsidian-attachment-manager",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "附件管理器：附件文件夹名称绑定笔记名、自动重命名、自动删除、显示/隐藏。",
     "main": "main.js",
     "scripts": {
