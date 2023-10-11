@@ -1,4 +1,4 @@
-import { FileManager, Notice, TFile, TextFileView, Vault, Workspace, normalizePath, requestUrl } from "obsidian";
+import { FileManager, FileSystemAdapter, Notice, TFile, TextFileView, Vault, Workspace, normalizePath, requestUrl } from "obsidian";
 import * as Path from 'path';
 
 
@@ -29,12 +29,14 @@ class Node{
 export class LocalizationAttachments {
     vault: Vault
     plugin: Plugin
+    adapter: FileSystemAdapter
     workspace: Workspace
     fileManager: FileManager
 
     constructor(plugin: Plugin) {
         this.vault = plugin.app.vault;
         this.plugin = plugin;
+        this.adapter = plugin.adapter;
         this.workspace = plugin.app.workspace;
         this.fileManager = plugin.app.fileManager;
     }
@@ -75,6 +77,13 @@ export class LocalizationAttachments {
         }
 
         const folderPath = Path.join(Path.dirname(activeFile.path), buildFolderName(this.plugin.settings, activeFile.name));
+
+        // 图片存放目录不存在时，创建目录
+        // https://github.com/chenfeicqq/obsidian-attachment-manager/issues/2
+        if (!(await this.adapter.exists(folderPath))) {
+            await this.vault.createFolder(folderPath);
+        }
+
         const imagePath = Path.join(folderPath, buildPastedImageName(this.plugin.settings, activeFile.basename));
 
         // `md` file
