@@ -1,10 +1,10 @@
-import { FileManager, FileSystemAdapter, Notice, TFile, TextFileView, Vault, Workspace, normalizePath, requestUrl } from "obsidian";
+import { moment, FileManager, FileSystemAdapter, Notice, TFile, TextFileView, Vault, Workspace, normalizePath, requestUrl } from "obsidian";
 import * as Path from 'path';
 
 
 import { Plugin } from '../Plugin'
 import { lang } from '../lang'
-import { buildFolderName, buildPastedImageName } from "../Settings";
+import { buildFolderName, buildPastedImageNameWithMoment } from "../Settings";
 
 // https://developer.mozilla.org/zh-CN/docs/Web/Media/Formats/Image_types
 const IMAGE_EXTENSION: Record<string, string> = {
@@ -84,21 +84,19 @@ export class LocalizationAttachments {
             await this.vault.createFolder(folderPath);
         }
 
-        const imagePath = Path.join(folderPath, buildPastedImageName(this.plugin.settings, activeFile.basename));
-
         // `md` file
         if (activeFile.extension === 'md') {
-            await this._process4MD(activeView, activeFile, imagePath);
+            await this._process4MD(activeView, activeFile, folderPath);
             return;
         }
         // `canvas` file
         if (activeFile.extension === 'canvas') {
-            await this._process4Canvas(activeView, imagePath);
+            await this._process4Canvas(activeView, activeFile, folderPath);
             return;
         }
     }
 
-    async _process4MD(activeView: TextFileView, activeFile: TFile, imagePath: string) {
+    async _process4MD(activeView: TextFileView, activeFile: TFile, folderPath: string) {
 
         const content = activeView.getViewData();
 
@@ -106,10 +104,16 @@ export class LocalizationAttachments {
         const regex = /!\[(?<anchor>.*?)\]\((?<link>.+?)\)/g
 
         const promises: Promise<string>[] = [];
+        // 时间种子
+        let timeseed = moment();
 
         // 找到所有链接异步下载
+        // TODO 避免同链接重复下载
         content.replace(regex, (match: string, anchor: string, link: string) => {
-            // TODO 避免同链接重复下载
+            // 时间种子 +1 ms，避免 content 中存在多个图片链接时，相同时间的图片名称相同，会导致保存失败
+            // https://github.com/chenfeicqq/obsidian-attachment-manager/issues/8
+            timeseed = timeseed.add(1, 'm');
+            const imagePath = Path.join(folderPath, buildPastedImageNameWithMoment(this.plugin.settings, timeseed, activeFile.basename));
             promises.push(this._download4MD(activeFile, match, link, imagePath));
             return match;
         });
@@ -141,15 +145,23 @@ export class LocalizationAttachments {
         return this.fileManager.generateMarkdownLink(file, activeFile.path);
     }
 
-    async _process4Canvas(activeView: TextFileView, imagePath: string) {
+    async _process4Canvas(activeView: TextFileView, activeFile: TFile, folderPath: string) {
 
         const content = JSON.parse(activeView.getViewData());
 
         const promises: Promise<void>[] = [];
+        // 时间种子
+        let timeseed = moment();
+
+        // TODO 避免同链接重复下载
         content.nodes.forEach((node: Node) => {
-            // TODO 避免同链接重复下载
+            // 时间种子 +1 ms，避免 content 中存在多个图片链接时，相同时间的图片名称相同，会导致保存失败
+            // https://github.com/chenfeicqq/obsidian-attachment-manager/issues/8
+            timeseed = timeseed.add(1, 'm');
+            const imagePath = Path.join(folderPath, buildPastedImageNameWithMoment(this.plugin.settings, timeseed, activeFile.basename));
             promises.push(this._download4Canvas(node, imagePath));
         });
+
         // 等待处理完成
         await Promise.all(promises);
 

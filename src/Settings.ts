@@ -51,6 +51,10 @@ export const buildFolderName = (settings: Settings, fileName: string) => {
 }
 
 export const buildPastedImageName = (settings: Settings, notename: string) => {
-    const datetime = moment().format(settings.datetimeFormat);
+    return buildPastedImageNameWithMoment(settings, moment(), notename);
+}
+
+export const buildPastedImageNameWithMoment = (settings: Settings, moment: moment.Moment, notename: string) => {
+    const datetime = moment.format(settings.datetimeFormat);
     return settings.pastedImageName.replace(_notename, notename).replace(_datetime, datetime);
 }
