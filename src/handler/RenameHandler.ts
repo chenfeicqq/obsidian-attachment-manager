@@ -3,7 +3,7 @@ import * as Path from 'path';
 
 import { Plugin } from "../Plugin"
 import { VaultAttachmentConfiguration } from "../components/VaultAttachmentConfiguration"
-import { buildFolderName, containsFilename } from "../Settings"
+import { buildFolderName, containsFilenameOrNotename } from "../Settings"
 
 export class RenameHandler {
     vault: Vault
@@ -36,15 +36,16 @@ export class RenameHandler {
             return;
         }
 
-        // 未包含 filename，说明不是每个 md 文件一个附件文件夹
-        if (!containsFilename(this.plugin.settings) || !this.plugin.settings.autoRenameFolder) {
+        // 未包含 filename/notename，说明不是每个 md 文件一个附件文件夹
+        if (!containsFilenameOrNotename(this.plugin.settings) || !this.plugin.settings.autoRenameFolder) {
             return;
         }
-        const newFolderName = buildFolderName(this.plugin.settings, newFile.name);
-        this.vaultAttachmentConfiguration.update(newFolderName)
+        const newFolderName = buildFolderName(this.plugin.settings, newFile.name, newFile.basename);
+        this.vaultAttachmentConfiguration.update(newFolderName);
         const newFolderPath = normalizePath(Path.join(Path.dirname(newFile.path), newFolderName));
 
-        const oldFolderPath = normalizePath(Path.join(Path.dirname(oldFilePath), buildFolderName(this.plugin.settings, Path.basename(oldFilePath))));
+        const oldFileParsedPath = Path.parse(oldFilePath);
+        const oldFolderPath = normalizePath(Path.join(Path.dirname(oldFilePath), buildFolderName(this.plugin.settings, oldFileParsedPath.base, oldFileParsedPath.name)));
 
         await this._renameFolder(oldFolderPath, newFolderPath);
 

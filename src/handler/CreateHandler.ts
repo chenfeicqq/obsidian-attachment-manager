@@ -48,7 +48,7 @@ export class CreateHandler {
             return;
         }
 
-        const folderPath = Path.join(Path.dirname(activeFile.path), buildFolderName(this.plugin.settings, activeFile.name));
+        const folderPath = Path.join(Path.dirname(activeFile.path), buildFolderName(this.plugin.settings, activeFile.name, activeFile.basename));
 
         // 不在激活文件的附件文件夹中
         if (!file.path.startsWith(folderPath)) {

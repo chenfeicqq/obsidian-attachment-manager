@@ -3,7 +3,7 @@ import * as Path from 'path';
 
 import { Plugin } from "../Plugin"
 import { VaultAttachmentConfiguration } from "../components/VaultAttachmentConfiguration"
-import { buildFolderName, containsFilename } from "../Settings"
+import { buildFolderName, containsFilenameOrNotename } from "../Settings"
 
 export class DeleteHandler {
     vault: Vault
@@ -30,12 +30,12 @@ export class DeleteHandler {
             return;
         }
 
-        // 未包含 filename，说明不是每个文件一个附件文件夹（不能删除）
-        if (!containsFilename(this.plugin.settings) || !this.plugin.settings.autoDeleteFolder) {
+        // 未包含 filename/notename，说明不是每个文件一个附件文件夹（不能删除）
+        if (!containsFilenameOrNotename(this.plugin.settings) || !this.plugin.settings.autoDeleteFolder) {
             return;
         }
 
-        const folderPath = Path.join(Path.dirname(file.path), buildFolderName(this.plugin.settings, file.name));
+        const folderPath = Path.join(Path.dirname(file.path), buildFolderName(this.plugin.settings, file.name, file.basename));
 
         if (await this.adapter.exists(folderPath)) {
 

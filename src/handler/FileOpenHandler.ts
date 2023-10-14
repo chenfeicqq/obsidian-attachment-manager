@@ -28,6 +28,6 @@ export class FileOpenHandler {
             return;
         }
 
-        this.vaultAttachmentConfiguration.update(buildFolderName(this.plugin.settings, file.name))
+        this.vaultAttachmentConfiguration.update(buildFolderName(this.plugin.settings, file.name, file.basename))
     }
 }

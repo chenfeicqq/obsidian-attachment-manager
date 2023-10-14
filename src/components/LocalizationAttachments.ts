@@ -76,7 +76,7 @@ export class LocalizationAttachments {
             return;
         }
 
-        const folderPath = Path.join(Path.dirname(activeFile.path), buildFolderName(this.plugin.settings, activeFile.name));
+        const folderPath = Path.join(Path.dirname(activeFile.path), buildFolderName(this.plugin.settings, activeFile.name, activeFile.basename));
 
         // 图片存放目录不存在时，创建目录
         // https://github.com/chenfeicqq/obsidian-attachment-manager/issues/2

@@ -26,8 +26,8 @@ export const DEFAULT_SETTINGS: Settings = {
     autoDeleteFolder: false,
 }
 
-export const containsFilename = (settings: Settings) => {
-    return settings.folderName.contains(_filename);
+export const containsFilenameOrNotename = (settings: Settings) => {
+    return settings.folderName.contains(_filename) || settings.folderName.contains(_notename);
 }
 
 const encode = (text: string) => {
@@ -45,9 +45,19 @@ export const buildFolderRegExp = (settings: Settings) => {
     return new RegExp("^" + reg + "$");
 }
 
-export const buildFolderName = (settings: Settings, fileName: string) => {
+export const buildFolderName = (settings: Settings, fileName: string, notename: string) => {
     // 指定当前文件所在文件夹（"./"）下指定的文件夹
-    return "./" + settings.folderName.replace(_filename, fileName);
+
+    // 使用 filename
+    if (settings.folderName.contains(_filename)) {
+        return "./" + settings.folderName.replace(_filename, fileName);
+    }
+    // 使用 notename
+    if (settings.folderName.contains(_notename)) {
+        return "./" + settings.folderName.replace(_notename, notename);
+    }
+    // 非 filename/notename
+    return "./" + settings.folderName;
 }
 
 export const buildPastedImageName = (settings: Settings, notename: string) => {
