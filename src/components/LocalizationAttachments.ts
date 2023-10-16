@@ -1,5 +1,5 @@
 import { moment, FileManager, FileSystemAdapter, Notice, TFile, TextFileView, Vault, Workspace, normalizePath, requestUrl } from "obsidian";
-import * as Path from 'path';
+import * as Path from "path/posix";
 
 
 import { Plugin } from '../Plugin'

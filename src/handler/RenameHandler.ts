@@ -1,5 +1,5 @@
 import { TFile, TAbstractFile, Vault, FileManager, FileSystemAdapter, normalizePath } from 'obsidian';
-import * as Path from 'path';
+import * as Path from "path/posix";
 
 import { Plugin } from "../Plugin"
 import { VaultAttachmentConfiguration } from "../components/VaultAttachmentConfiguration"
