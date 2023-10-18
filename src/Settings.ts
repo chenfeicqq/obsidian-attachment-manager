@@ -41,7 +41,9 @@ const encode = (text: string) => {
 
 export const buildFolderRegExp = (settings: Settings) => {
     let reg = encode(settings.folderName);
-    reg = reg.replace(encode(_filename), ".+");
+    // 兼容 notename
+    // https://github.com/chenfeicqq/obsidian-attachment-manager/issues/11
+    reg = reg.replace(encode(_filename), ".+").replace(encode(_notename), ".+");
     return new RegExp("^" + reg + "$");
 }
 
